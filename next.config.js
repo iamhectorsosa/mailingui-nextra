@@ -4,19 +4,9 @@ const nextConfig = {
     return [
       {
         source: "/docs",
-        destination: "/docs/guide/introduction",
+        destination: "/docs/guide",
         permanent: true,
-      },
-      {
-        source: "/docs/guide",
-        destination: "/docs/guide/introduction",
-        permanent: true,
-      },
-      {
-        source: "/docs/components",
-        destination: "/docs/components/overview",
-        permanent: true,
-      },
+      }
     ];
   },
 };

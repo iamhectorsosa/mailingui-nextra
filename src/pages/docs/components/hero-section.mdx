@@ -1,0 +1,36 @@
+import { getProps } from "@utils";
+import BasicUsage from "@components/docs/components/basic-usage/basic-usage.mdx";
+import Installation from "@components/docs/components/installation/installation.mdx";
+
+export const getStaticProps = async () => {
+  const { type, html, demoCode, sourceCode } = await getProps({
+    type: "hero-section"
+  }) 
+
+  return {
+    props: {
+      ssg: {
+        type,
+        html,
+        demoCode,
+        sourceCode,
+      },
+    },
+  };
+};
+
+# Hero Section
+
+Beautiful headers to showcase your message
+
+## Basic Usage
+
+<BasicUsage />
+
+## Installation
+
+<Installation cli="heroSection" />
+
+## Examples
+
+Coming soon

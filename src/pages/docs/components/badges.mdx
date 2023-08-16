@@ -1,0 +1,36 @@
+import { getProps } from "@utils";
+import BasicUsage from "@components/docs/components/basic-usage/basic-usage.mdx";
+import Installation from "@components/docs/components/installation/installation.mdx";
+
+export const getStaticProps = async () => {
+  const { type, html, demoCode, sourceCode } = await getProps({
+    type: "badge"
+  }) 
+
+  return {
+    props: {
+      ssg: {
+        type,
+        html,
+        demoCode,
+        sourceCode,
+      },
+    },
+  };
+};
+
+# Badges
+
+Highlight key information with attention-grabbing badges
+
+## Basic Usage
+
+<BasicUsage />
+
+## Installation
+
+<Installation cli="badge" />
+
+## Examples
+
+Coming soon

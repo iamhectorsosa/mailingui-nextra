@@ -19,8 +19,14 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@components/*": ["./src/components/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@utils": ["src/utils/index.tsx"],
+      "@examples/*": ["./src/examples/*"],
+      "@mailingui/components": ["./src/mailingui/components/index.ts"],
+      "@mailingui/themes": ["./src/mailingui/themes/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

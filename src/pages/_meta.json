@@ -1,0 +1,71 @@
+{
+  "index": {
+    "title": "Home",
+    "display": "hidden",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "full"
+    }
+  },
+  "docs": {
+    "title": "Docs",
+    "type": "page"
+  },
+  "templates": {
+    "title": "Templates",
+    "type": "page",
+    "href": "/templates",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "full"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "type": "page",
+    "href": "/blog",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "full"
+    }
+  },
+  "feedback": {
+    "title": "Feedback",
+    "type": "page",
+    "href": "/feedback",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "full"
+    }
+  },
+  "preview": {
+    "title": "Preview",
+    "type": "page",
+    "href": "/preview",
+    "theme": {
+      "breadcrumb": false,
+      "navbar": false,
+      "footer": false,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "full"
+    }
+  }
+}

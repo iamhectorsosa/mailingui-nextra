@@ -1,0 +1,36 @@
+import { getProps } from "@utils";
+import BasicUsage from "@components/docs/components/basic-usage/basic-usage.mdx";
+import Installation from "@components/docs/components/installation/installation.mdx";
+
+export const getStaticProps = async () => {
+  const { type, html, demoCode, sourceCode } = await getProps({
+    type: "button"
+  }) 
+
+  return {
+    props: {
+      ssg: {
+        type,
+        html,
+        demoCode,
+        sourceCode,
+      },
+    },
+  };
+};
+
+# Buttons
+
+Drive user action with clickable buttons
+
+## Basic Usage
+
+<BasicUsage />
+
+## Installation
+
+<Installation cli="button" />
+
+## Examples
+
+Coming soon

@@ -1,10 +1,10 @@
-import { getProps } from "@utils";
+import { getComponentProps } from "@utils";
 import BasicUsage from "@components/docs/components/basic-usage/basic-usage.mdx";
 import Installation from "@components/docs/components/installation/installation.mdx";
 import { Examples } from "@components/docs/components/examples/Examples.tsx";
 
 export const getStaticProps = async () => {
-  const { type, html, demoCode, sourceCode, examples } = await getProps({
+  const { type, html, demoCode, sourceCode, examples } = await getComponentProps({
     type: "list"
   }) 
 

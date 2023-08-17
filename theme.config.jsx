@@ -1,5 +1,8 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { MailingUILogo } from "@components/MailingUILogo";
 import { Footer } from "@components/shared/Footer";
+import { useRouter } from 'next/router'
+import { useConfig } from 'nextra-theme-docs'
 
 const theme = {
   logo: <MailingUILogo />,
@@ -22,6 +25,29 @@ const theme = {
     defaultTheme: "dark",
   },
   primaryHue: 320,
+  useNextSeoProps() {
+    return {
+      titleTemplate: '%s – MailingUI'
+    }
+  },
+  head: () => {
+    const { asPath, defaultLocale, locale } = useRouter()
+    const { frontMatter } = useConfig()
+    const url =
+      'https://mailingui.com' +
+      (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
+ 
+    return (
+      <>
+        <meta property="og:url" content={url} />
+        <meta property="og:title" content={frontMatter.title || 'MailingUI'} />
+        <meta
+          property="og:description"
+          content={frontMatter.description || 'Create emails powered by open-source'}
+        />
+      </>
+    )
+  },
   feedback: {
     useLink: () => "/feedback",
   },

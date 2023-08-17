@@ -2,11 +2,11 @@ import fs from "fs";
 import { getHighlighter, highlight } from "@lib/shiki";
 import { render } from "@react-email/render";
 
-type getPropsOptions = {
+type getComponentPropsOptions = {
   type: string;
 };
 
-export const getProps = async ({ type }: getPropsOptions) => {
+export const getComponentProps = async ({ type }: getComponentPropsOptions) => {
   const highlighter = await getHighlighter();
 
   // Installation

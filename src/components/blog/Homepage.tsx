@@ -1,29 +1,49 @@
+import { blogPostRegistry } from "@utils/blog";
+import dayjs from "dayjs";
 import Link from "next/link";
+
+const posts = blogPostRegistry.reverse();
 
 export const Homepage = () => {
   return (
-    <div className="mx-auto grid place-content-center place-items-center h-full w-full gap-6 text-center">
-      <section className="space-y-6">
-        <h1 className="text-4xl font-semibold md:text-6xl">
-          Under Construction
-        </h1>
-        <p className="text-lg leading-relaxed text-neutral-500">
-          This page is still under construction! Thanks for your patience!
-        </p>
-        <div className="w-full md:flex md:gap-4 md:justify-center">
-          <Link
-            href={"https://github.com/webscopeio/mailingui/issues"}
-            className="border block w-full md:w-fit px-8 py-4 rounded-xl bg-white text-black font-medium"
-          >
-            Report an issue
-          </Link>
-          <Link
-            href={"https://github.com/webscopeio/mailingui/discussions"}
-            className="w-full block md:w-fit px-8 py-4 border border-transparent rounded-xl font-medium"
-          >
-            Request a new feature
-          </Link>
+    <div className="mx-auto w-full max-w-[900px] px-4 py-8">
+      <header className="grid gap-y-8 py-10">
+        <div className="space-y-2">
+          <h1 className="nx-mt-2 nx-text-4xl nx-font-bold nx-tracking-tight nx-text-slate-900 dark:nx-text-slate-100">
+            From the blog
+          </h1>
+          <p className="nx-text-gray-400">
+            More news and blog posts coming soon...
+          </p>
         </div>
+      </header>
+      <section className="grid grid-cols-1 gap-x-4 gap-y-8 border-t border-white/10 py-10 lg:grid-cols-2">
+        {posts.map((post) => (
+          <div
+            key={post.slug}
+            className="group relative grid place-content-start space-y-2 transition-color"
+          >
+            <div className="flex items-center gap-x-2 text-sm text-slate-300">
+              <time dateTime={post.date}>
+                {dayjs(post.date).format("D MMM YY")}
+              </time>
+              <span>·</span>
+              <div className="space-x-1">
+                <span>by</span>
+                <span className="bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text font-semibold text-transparent">
+                  @{post.github}
+                </span>
+              </div>
+            </div>
+            <h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-900 dark:nx-text-slate-100 text-2xl hover:nx-text-primary-600">
+              <Link href={`/blog/${post.slug}`}>
+                <span className="absolute inset-0" />
+                {post.title}
+              </Link>
+            </h3>
+            <p className="line-clamp-2 nx-text-gray-400">{post.description}</p>
+          </div>
+        ))}
       </section>
     </div>
   );

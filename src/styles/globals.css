@@ -2,10 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scroll-behavior: smooth;
+}
+
 :root {
   --nextra-navbar-height: 6rem;
 }
 
 .nextra-toc > div {
   @apply top-[var(--nextra-navbar-height)];
+}
+
+.-nx-mt-20 {
+  @apply !-mt-28
 }

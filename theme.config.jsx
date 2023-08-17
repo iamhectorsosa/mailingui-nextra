@@ -9,19 +9,6 @@ const theme = {
   project: {
     link: "https://github.com/webscope/mailingui",
   },
-  head: (
-    <>
-      <link rel="shortcut icon" href="public/favicons/favicon-512.png"></link>
-      <link rel="icon" href="public/favicons/favicon-32.svg" type="image/svg+xml"></link>
-      <link rel="icon" href="public/favicons/favicon-32.ico" sizes="any"></link>
-      <link rel="apple-touch-icon" href="public/favicons/favicon-512.png"></link>
-      <script
-        defer=""
-        data-domain="mailingui.com"
-        src="https://plausible.io/js/script.js"
-      ></script>
-    </>
-  ),
   chat: {
     link: "https://twitter.com/mailingui",
     icon: (
@@ -44,11 +31,9 @@ const theme = {
     };
   },
   head: () => {
-    const { asPath, defaultLocale, locale } = useRouter();
+    const { asPath } = useRouter();
     const { frontMatter } = useConfig();
-    const url =
-      "https://mailingui.com" +
-      (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
+    const url = "https://mailingui.com" + asPath;
 
     return (
       <>
@@ -60,6 +45,26 @@ const theme = {
             frontMatter.description || "Create emails powered by open-source"
           }
         />
+        <link rel="shortcut icon" href="public/favicons/favicon-512.png"></link>
+        <link
+          rel="icon"
+          href="public/favicons/favicon-32.svg"
+          type="image/svg+xml"
+        ></link>
+        <link
+          rel="icon"
+          href="public/favicons/favicon-32.ico"
+          sizes="any"
+        ></link>
+        <link
+          rel="apple-touch-icon"
+          href="public/favicons/favicon-512.png"
+        ></link>
+        <script
+          defer=""
+          data-domain="mailingui.com"
+          src="https://plausible.io/js/script.js"
+        ></script>
       </>
     );
   },

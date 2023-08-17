@@ -25,7 +25,7 @@ export const BlogPostWrapper = ({
           <div className="space-x-1">
             <span>by</span>
             <a target="_blank" href={`https://github.com/${github}`}>
-              <span className="bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text font-semibold text-transparent">
+              <span className="brand-gradient bg-clip-text font-semibold text-transparent">
                 @{github}
               </span>
             </a>
@@ -51,7 +51,7 @@ export const BlogPostWrapper = ({
           <div className="space-x-1">
             <span>Written by</span>
             <a target="_blank" href={`https://github.com/${github}`}>
-              <span className="bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text font-semibold text-transparent">
+              <span className="brand-gradient bg-clip-text font-semibold text-transparent">
                 {github}
               </span>
             </a>

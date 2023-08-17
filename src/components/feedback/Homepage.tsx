@@ -4,9 +4,9 @@ import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
   return (
-    <div className="mx-auto grid place-content-center place-items-center h-full w-full gap-6 md:grid-cols-2">
+    <div className="mx-auto max-w-5xl grid place-content-center place-items-center h-full w-full gap-6 lg:grid-cols-2">
       <section className="space-y-6">
-        <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
+        <h1 className="text-5xl font-bold tracking-tight">
           Share your Feedback
         </h1>
         <p className="text-lg leading-relaxed nx-text-gray-400">
@@ -14,7 +14,7 @@ export const Homepage = () => {
           issue you&apos;ve encountered or a new feature suggestion, your
           feedback is important to us.
         </p>
-        <div className="w-full md:flex md:gap-4">
+        <div className="lg:space-x-2 space-y-2">
           <CTA href="https://github.com/webscopeio/mailingui/issues">
             Report an issue
           </CTA>
@@ -27,7 +27,7 @@ export const Homepage = () => {
         src={feedbackImage}
         alt="Feedback Image"
         quality={100}
-        className="md:max-w-[500px]"
+        className="lg:max-w-[500px]"
         priority={true}
       />
     </div>

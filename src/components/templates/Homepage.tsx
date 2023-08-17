@@ -1,30 +1,97 @@
+import { CTA } from "@components/ui/CTA";
+import { DownloadIcon, ExternalLinkIcon, ShareIcon } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { templates } from "@utils/templates";
 
 export const Homepage = () => {
   return (
-    <div className="mx-auto grid place-content-center place-items-center h-full w-full gap-6 text-center">
-      <section className="space-y-6">
-        <h1 className="text-4xl font-semibold md:text-6xl">
-          Under Construction
-        </h1>
-        <p className="text-lg leading-relaxed text-neutral-500">
-          This page is still under construction! Thanks for your patience!
-        </p>
-        <div className="w-full md:flex md:gap-4 md:justify-center">
-          <Link
-            href={"https://github.com/webscopeio/mailingui/issues"}
-            className="border block w-full md:w-fit px-8 py-4 rounded-xl bg-white text-black font-medium"
-          >
-            Report an issue
-          </Link>
-          <Link
-            href={"https://github.com/webscopeio/mailingui/discussions"}
-            className="w-full block md:w-fit px-8 py-4 border border-transparent rounded-xl font-medium"
-          >
-            Request a new feature
-          </Link>
+    <div className="mx-auto w-full pt-12 space-y-12">
+      {templates.map((template) => (
+        <div key={template.id}>
+          <header className="pb-10 space-y-4">
+            <div className="space-y-2">
+              <div className="flex items-center gap-x-2 text-sm nx-text-gray-400">
+                <span>{template.price}</span>
+                <span>·</span>
+                <div className="space-x-1">
+                  <span>created by</span>
+                  <a
+                    target="_blank"
+                    href={`https://github.com/${
+                      template.github === "MailingUI"
+                        ? "webscope/mailingui"
+                        : template.github
+                    }`}
+                  >
+                    <span className="brand-gradient bg-clip-text font-semibold text-transparent">
+                      @{template.github}
+                    </span>
+                  </a>
+                </div>
+              </div>
+              <h1 className="nx-text-4xl nx-font-bold nx-tracking-tight nx-text-slate-100">
+                {template.title}
+              </h1>
+              <p className="nx-text-gray-400">{template.description}</p>
+            </div>
+            <div className="lg:space-x-2 space-y-2">
+              <CTA href="/">
+                <DownloadIcon />
+                Download
+              </CTA>
+              <CTA secondary href="/">
+                <ShareIcon />
+                Share
+              </CTA>
+            </div>
+          </header>
+          <section className="space-y-12 border-t border-white/10 py-10">
+            {template.categories.map((category) => (
+              <div
+                key={category.downloadHref}
+                className="grid gap-6 grid-cols-1 lg:grid-cols-2 items-center justify-center"
+              >
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-100 text-2xl">
+                      {category.title}
+                    </h3>
+                    <p className="line-clamp-2 nx-text-gray-400">
+                      {category.description}
+                    </p>
+                  </div>
+                  <div className="lg:space-x-2 space-y-2">
+                    <CTA compact href="/">
+                      <ExternalLinkIcon />
+                      Preview
+                    </CTA>
+                    <CTA compact secondary href="/">
+                      <DownloadIcon />
+                      Download
+                    </CTA>
+                  </div>
+                </div>
+                <div className="overflow-x-auto">
+                  <div className="relative flex w-max gap-x-4">
+                    {category.imageUrls.map((image, i) => (
+                      <Image
+                        key={i}
+                        src={image}
+                        height={232}
+                        width={260}
+                        alt={`Minimal - ${category.title} preview`}
+                        className="rounded-md"
+                      />
+                    ))}
+                    <div className="absolute bottom-0 h-1/2 w-full bg-[linear-gradient(to_bottom,transparent,#111111)]" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </section>
         </div>
-      </section>
+      ))}
     </div>
   );
 };

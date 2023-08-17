@@ -17,3 +17,11 @@
 .-nx-mt-20 {
   @apply !-mt-28
 }
+
+.brand-gradient {
+  @apply bg-gradient-to-br from-indigo-700 from-10% via-purple-500 via-30% to-pink-500 to-90% saturate-[115%];
+}
+
+.hover-brand-gradient:hover {
+  @apply bg-gradient-to-br from-indigo-700 from-10% via-purple-600 via-30% to-pink-600 to-90% saturate-[115%];
+}

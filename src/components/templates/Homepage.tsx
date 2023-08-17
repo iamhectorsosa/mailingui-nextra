@@ -1,6 +1,5 @@
 import { CTA } from "@components/ui/CTA";
 import { DownloadIcon, ExternalLinkIcon, ShareIcon } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
 import { templates } from "@utils/templates";
 

@@ -1,14 +1,27 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { MailingUILogo } from "@components/MailingUILogo";
 import { Footer } from "@components/shared/Footer";
-import { useRouter } from 'next/router'
-import { useConfig } from 'nextra-theme-docs'
+import { useRouter } from "next/router";
+import { useConfig } from "nextra-theme-docs";
 
 const theme = {
   logo: <MailingUILogo />,
   project: {
     link: "https://github.com/webscope/mailingui",
   },
+  head: (
+    <>
+      <link rel="shortcut icon" href="public/favicons/favicon-512.png"></link>
+      <link rel="icon" href="public/favicons/favicon-32.svg" type="image/svg+xml"></link>
+      <link rel="icon" href="public/favicons/favicon-32.ico" sizes="any"></link>
+      <link rel="apple-touch-icon" href="public/favicons/favicon-512.png"></link>
+      <script
+        defer=""
+        data-domain="mailingui.com"
+        src="https://plausible.io/js/script.js"
+      ></script>
+    </>
+  ),
   chat: {
     link: "https://twitter.com/mailingui",
     icon: (
@@ -27,26 +40,28 @@ const theme = {
   primaryHue: 320,
   useNextSeoProps() {
     return {
-      titleTemplate: '%s – MailingUI'
-    }
+      titleTemplate: "%s – MailingUI",
+    };
   },
   head: () => {
-    const { asPath, defaultLocale, locale } = useRouter()
-    const { frontMatter } = useConfig()
+    const { asPath, defaultLocale, locale } = useRouter();
+    const { frontMatter } = useConfig();
     const url =
-      'https://mailingui.com' +
-      (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
- 
+      "https://mailingui.com" +
+      (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
+
     return (
       <>
         <meta property="og:url" content={url} />
-        <meta property="og:title" content={frontMatter.title || 'MailingUI'} />
+        <meta property="og:title" content={frontMatter.title || "MailingUI"} />
         <meta
           property="og:description"
-          content={frontMatter.description || 'Create emails powered by open-source'}
+          content={
+            frontMatter.description || "Create emails powered by open-source"
+          }
         />
       </>
-    )
+    );
   },
   feedback: {
     useLink: () => "/feedback",

@@ -13,7 +13,8 @@
   },
   "docs": {
     "title": "Docs",
-    "type": "page"
+    "type": "page",
+    "href": "/docs"
   },
   "templates": {
     "title": "Templates",

@@ -19,7 +19,7 @@ export const BlogPostWrapper = ({
   return (
     <>
       <header className="space-y-2 pt-12">
-        <div className="flex items-center gap-x-2 text-sm text-slate-300">
+        <div className="flex items-center gap-x-2 text-sm nx-text-gray-400">
           <time dateTime={date}>{dayjs(date).format("dddd D MMMM YY")}</time>
           <span>·</span>
           <div className="space-x-1">
@@ -32,7 +32,7 @@ export const BlogPostWrapper = ({
           </div>
         </div>
         <h1 className="text-4xl font-bold tracking-tight">{title}</h1>
-        <p className="leading-7 text-slate-300 pt-2">{description}</p>
+        <p className="leading-7 nx-text-gray-400 pt-2">{description}</p>
       </header>
       {children}
       <footer className="flex items-center gap-x-3 pt-12">
@@ -47,7 +47,7 @@ export const BlogPostWrapper = ({
           }
           className="overflow-hidden rounded-full"
         />
-        <div className="grid gap-1 text-slate-300">
+        <div className="grid gap-1 nx-text-gray-400">
           <div className="space-x-1">
             <span>Written by</span>
             <a target="_blank" href={`https://github.com/${github}`}>

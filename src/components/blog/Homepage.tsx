@@ -6,10 +6,10 @@ const posts = blogPostRegistry.reverse();
 
 export const Homepage = () => {
   return (
-    <div className="mx-auto w-full max-w-[900px] px-4 py-8">
-      <header className="grid gap-y-8 py-10">
+    <div className="mx-auto w-full max-w-[900px] pt-12">
+      <header className="grid gap-y-8 pb-10">
         <div className="space-y-2">
-          <h1 className="nx-mt-2 nx-text-4xl nx-font-bold nx-tracking-tight nx-text-slate-900 dark:nx-text-slate-100">
+          <h1 className="nx-mt-2 nx-text-4xl nx-font-bold nx-tracking-tight nx-text-slate-100">
             From the blog
           </h1>
           <p className="nx-text-gray-400">
@@ -23,7 +23,7 @@ export const Homepage = () => {
             key={post.slug}
             className="group relative grid place-content-start space-y-2 transition-color"
           >
-            <div className="flex items-center gap-x-2 text-sm text-slate-300">
+            <div className="flex items-center gap-x-2 text-sm nx-text-gray-400">
               <time dateTime={post.date}>
                 {dayjs(post.date).format("D MMM YY")}
               </time>
@@ -35,7 +35,7 @@ export const Homepage = () => {
                 </span>
               </div>
             </div>
-            <h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-900 dark:nx-text-slate-100 text-2xl hover:nx-text-primary-600">
+            <h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-100 text-2xl hover:nx-text-primary-600">
               <Link href={`/blog/${post.slug}`}>
                 <span className="absolute inset-0" />
                 {post.title}

@@ -5,7 +5,7 @@ import { templates } from "@utils/templates";
 
 export const Homepage = () => {
   return (
-    <div className="mx-auto w-full pt-12 space-y-12">
+    <div className="mx-auto max-w-5xl pt-12 space-y-12">
       {templates.map((template) => (
         <div key={template.id}>
           <header className="pb-10 space-y-4">

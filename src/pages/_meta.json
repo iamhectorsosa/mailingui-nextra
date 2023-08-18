@@ -25,7 +25,8 @@
       "footer": true,
       "sidebar": false,
       "toc": false,
-      "pagination": false
+      "pagination": false,
+      "layout": "full"
     }
   },
   "blog": {
@@ -37,7 +38,8 @@
       "footer": true,
       "sidebar": false,
       "toc": true,
-      "pagination": false
+      "pagination": false,
+      "layout": "full"
     }
   },
   "feedback": {

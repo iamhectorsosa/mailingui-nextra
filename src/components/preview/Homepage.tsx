@@ -11,9 +11,9 @@ export const Homepage = () => {
           This page is still under construction! Thanks for your patience!
         </p>
         <div className="lg:space-x-2 space-y-2">
-          <CTA href="/docs">Documentation</CTA>
-          <CTA secondary href="/templates">
-            Templates
+          <CTA href="/">Go back Home</CTA>
+          <CTA secondary href="/docs">
+            Documentation
           </CTA>
         </div>
       </section>

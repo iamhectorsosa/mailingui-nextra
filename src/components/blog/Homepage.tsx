@@ -6,7 +6,7 @@ const posts = blogPostRegistry.reverse();
 
 export const Homepage = () => {
   return (
-    <div className="mx-auto w-full pt-12">
+    <div className="mx-auto max-w-5xl pt-12">
       <header className="pb-10 space-y-2">
         <h1 className="nx-text-4xl nx-font-bold nx-tracking-tight nx-text-slate-100">
           From the blog

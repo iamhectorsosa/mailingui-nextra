@@ -24,7 +24,7 @@ const theme = {
   nextThemes: {
     defaultTheme: "dark",
   },
-  primaryHue: 320,
+  primaryHue: 330,
   useNextSeoProps() {
     return {
       titleTemplate: "%s – MailingUI",
@@ -45,20 +45,20 @@ const theme = {
             frontMatter.description || "Create emails powered by open-source"
           }
         />
-        <link rel="shortcut icon" href="public/favicons/favicon-512.png"></link>
+        <link rel="shortcut icon" href="favicons/favicon-512.png"></link>
         <link
           rel="icon"
-          href="public/favicons/favicon-32.svg"
+          href="favicons/favicon-32.svg"
           type="image/svg+xml"
         ></link>
         <link
           rel="icon"
-          href="public/favicons/favicon-32.ico"
+          href="favicons/favicon-32.ico"
           sizes="any"
         ></link>
         <link
           rel="apple-touch-icon"
-          href="public/favicons/favicon-512.png"
+          href="favicons/favicon-512.png"
         ></link>
         <script
           defer=""

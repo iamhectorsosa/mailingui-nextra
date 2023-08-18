@@ -19,7 +19,7 @@ export const Homepage = () => {
             <GradientBadge>React</GradientBadge>
             <GradientBadge>HTML</GradientBadge>
           </div>
-          <h1 className="text-6xl font-semibold tracking-tight">
+          <h1 className="text-5xl lg:text-6xl font-semibold tracking-tight">
             Create emails powered by open-source
           </h1>
           <p className="text-lg leading-relaxed nx-text-gray-400">
@@ -61,7 +61,7 @@ export const Homepage = () => {
           <h2 className="font-semibold uppercase nx-text-gray-400">
             Newsletter
           </h2>
-          <h3 className="max-w-2xl lg:mx-auto text-5xl font-semibold tracking-tight">
+          <h3 className="max-w-2xl lg:mx-auto text-3xl lg:text-4xl font-semibold tracking-tight">
             Enter your email address and stay tuned
           </h3>
         </header>
@@ -86,7 +86,7 @@ export const Homepage = () => {
           <h2 className="font-semibold uppercase nx-text-gray-400">
             Components
           </h2>
-          <h3 className="mx-auto text-6xl font-semibold tracking-tight">
+          <h3 className="mx-auto text-5xl lg:text-6xl font-semibold tracking-tight">
             Build an eye-catching email with pre-made components
           </h3>
         </header>
@@ -103,7 +103,7 @@ export const Homepage = () => {
           <h2 className="font-semibold uppercase nx-text-gray-400">
             Templates
           </h2>
-          <h3 className="mx-auto text-6xl font-semibold tracking-tight">
+          <h3 className="mx-auto text-5xl lg:text-6xl font-semibold tracking-tight">
             Modern email templates, crafted with MailingUI
           </h3>
         </header>
@@ -123,7 +123,7 @@ export const Homepage = () => {
               <GradientBadge>New</GradientBadge>
               <GradientBadge>Open-sourced</GradientBadge>
             </div>
-            <h1 className="text-4xl font-semibold tracking-tight">Minimal</h1>
+            <h1 className="text-3xl lg:text-4xl font-semibold tracking-tight">Minimal</h1>
             <p className="text-lg leading-relaxed nx-text-gray-400">
               Minimal calls for a simple and clean design.
             </p>

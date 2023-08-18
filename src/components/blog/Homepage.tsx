@@ -8,7 +8,7 @@ export const Homepage = () => {
   return (
     <div className="mx-auto max-w-5xl pt-12">
       <header className="pb-10 space-y-2">
-        <h1 className="nx-text-4xl nx-font-bold nx-tracking-tight nx-text-slate-100">
+        <h1 className="text-4xl font-bold tracking-tight nx-text-slate-100">
           From the blog
         </h1>
         <p className="nx-text-gray-400">
@@ -33,7 +33,7 @@ export const Homepage = () => {
                 </span>
               </div>
             </div>
-            <h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-100 text-2xl hover:opacity-75">
+            <h3 className="font-semibold tracking-tight nx-text-slate-100 text-2xl hover:opacity-75">
               <Link href={`/blog/${post.slug}`}>
                 <span className="absolute inset-0" />
                 {post.title}

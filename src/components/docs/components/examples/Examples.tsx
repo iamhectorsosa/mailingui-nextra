@@ -13,10 +13,10 @@ type Example = {
 export const Examples = () => {
   const { examples } = useData() as { examples: Example[] };
   return (
-    <>
+    <div className="space-y-12 py-6">
       {examples.map((example, id: number) => (
         <div key={id}>
-          <h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-900 dark:nx-text-slate-100 nx-mt-8 nx-text-2xl">{transformComponentName(example.name)}</h3>
+          <h3 className="font-semibold tracking-tight nx-text-slate-100 text-2xl">{transformComponentName(example.name)}</h3>
           <Tabs items={["Preview", "Code"]}>
             <Tab>
               <ExamplePreview type={example.type} html={example.html} />
@@ -27,7 +27,7 @@ export const Examples = () => {
           </Tabs>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

@@ -6,7 +6,7 @@ export const Homepage = () => {
   return (
     <div className="mx-auto max-w-5xl grid place-content-center place-items-center h-full w-full gap-6 lg:grid-cols-2">
       <section className="space-y-6">
-        <h1 className="text-5xl font-bold tracking-tight">
+        <h1 className="text-5xl lg:text-6xl font-semibold tracking-tight">
           Share your Feedback
         </h1>
         <p className="text-lg leading-relaxed nx-text-gray-400">

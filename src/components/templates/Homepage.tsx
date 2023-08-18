@@ -29,7 +29,7 @@ export const Homepage = () => {
                   </a>
                 </div>
               </div>
-              <h1 className="nx-text-4xl nx-font-bold nx-tracking-tight nx-text-slate-100">
+              <h1 className="text-4xl font-bold tracking-tight nx-text-slate-100">
                 {template.title}
               </h1>
               <p className="nx-text-gray-400">{template.description}</p>
@@ -53,7 +53,7 @@ export const Homepage = () => {
               >
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <h3 className="nx-font-semibold nx-tracking-tight nx-text-slate-100 text-2xl">
+                    <h3 className="font-semibold tracking-tight nx-text-slate-100 text-2xl">
                       {category.title}
                     </h3>
                     <p className="line-clamp-2 nx-text-gray-400">

@@ -13,9 +13,19 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export const Homepage = ({ fileTree }: { fileTree: FileType[] }) => {
+export const Homepage = ({
+  fileTree,
+  selectedPath,
+  isFolder,
+  html,
+}: {
+  fileTree: FileType[];
+  selectedPath: string;
+  isFolder: boolean;
+  html?: string;
+}) => {
   return (
-    <div className="h-screen w-screen flex bg-[#111111] text-slate-100">
+    <div className="max-h-screen h-screen w-screen flex bg-[#111111] text-slate-100">
       {/* Preview File Explorer */}
       <aside className="w-[300px] bg-stone-900/25 px-5 py-6 space-y-4 hidden lg:block">
         <header>
@@ -33,7 +43,7 @@ export const Homepage = ({ fileTree }: { fileTree: FileType[] }) => {
         </div>
       </aside>
       {/* Preview Toolbar */}
-      <div className="flex-1">
+      <div className="flex-1 h-full flex flex-col">
         <nav className="flex justify-between gap-2 p-2">
           <div className="flex items-center gap-4">
             <CTA secondary dynamicWidth={false} compact href="/templates">
@@ -41,11 +51,15 @@ export const Homepage = ({ fileTree }: { fileTree: FileType[] }) => {
               <span className="hidden lg:inline">Back Templates</span>
             </CTA>
             <h3 className="text-slate-100 font-medium text-sm inline-flex items-center gap-x-2">
-              <FileIcon className="h-5 w-5" />
-              events/event-confirmation.tsx
+              {isFolder ? (
+                <FolderIcon className="h-5 w-5" />
+              ) : (
+                <FileIcon className="h-5 w-5" />
+              )}
+              {selectedPath}
             </h3>
           </div>
-          <div className="items-center gap-4 hidden lg:flex">
+          <div className="items-center gap-4 hidden lg:flex opacity-50">
             <div className="bg-stone-900 rounded-full p-2">
               <button className="brand-gradient rounded-full gap-x-2 px-2 h-9 hover:bg-stone-800">
                 <EyeIcon />
@@ -61,7 +75,14 @@ export const Homepage = ({ fileTree }: { fileTree: FileType[] }) => {
           </div>
         </nav>
         {/* Preview Pane */}
-        <div />
+        <div className="h-full">
+          <iframe
+            className="w-full h-full"
+            id={selectedPath}
+            title={selectedPath}
+            srcDoc={html}
+          />
+        </div>
       </div>
     </div>
   );

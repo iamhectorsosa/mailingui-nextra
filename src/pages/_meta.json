@@ -66,7 +66,7 @@
       "sidebar": false,
       "toc": false,
       "pagination": false,
-      "layout": "full"
+      "layout": "raw"
     }
   }
 }

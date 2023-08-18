@@ -34,16 +34,10 @@ export const Homepage = () => {
               </h1>
               <p className="nx-text-gray-400">{template.description}</p>
             </div>
-            <div className="lg:space-x-2 space-y-2">
-              <CTA href="/">
-                <DownloadIcon />
-                Download
-              </CTA>
-              <CTA secondary href="/">
-                <ShareIcon />
-                Share
-              </CTA>
-            </div>
+            <CTA href={template.downloadHref}>
+              <DownloadIcon />
+              Download
+            </CTA>
           </header>
           <section className="space-y-12 border-t border-white/10 py-10">
             {template.categories.map((category) => (
@@ -61,11 +55,11 @@ export const Homepage = () => {
                     </p>
                   </div>
                   <div className="lg:space-x-2 space-y-2">
-                    <CTA compact href="/">
+                    <CTA compact href={category.href}>
                       <ExternalLinkIcon />
                       Preview
                     </CTA>
-                    <CTA compact secondary href="/">
+                    <CTA compact secondary href={category.downloadHref}>
                       <DownloadIcon />
                       Download
                     </CTA>

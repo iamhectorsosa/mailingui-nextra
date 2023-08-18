@@ -34,33 +34,36 @@ export const templates: Template[] = [
     price: "Free and open-sourced",
     github: "MailingUI",
     title: "Minimal",
-    description:
-      "Minimal calls for a simple and clean design.",
-    downloadHref: "",
+    description: "Minimal calls for a simple and clean design.",
+    downloadHref:
+      "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/webscopeio/mailingui/tree/main/src/emails/minimal",
     categories: [
       {
         title: "Events",
         description:
           "Events are a great way to get people together. Can be conference, a meetup, or a party.",
-        href: "/preview/events",
+        href: "/preview/minimal/events",
         imageUrls: [events1, events2, events3],
-        downloadHref: "events",
+        downloadHref:
+          "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/webscopeio/mailingui/tree/main/src/emails/minimal/events",
       },
       {
         title: "Marketing",
         description:
           "Marketing emails are a great way to promote your business with product announcement or a special offer.",
-        href: "/preview/marketing",
+        href: "/preview/minimal/marketing",
         imageUrls: [marketing1, marketing2, marketing3],
-        downloadHref: "marketing",
+        downloadHref:
+          "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/webscopeio/mailingui/tree/main/src/emails/minimal/marketing",
       },
       {
         title: "Newsletter",
         description:
           "Newsletters are a great way to keep your audience up-to-date with what's going on in your business.",
-        href: "/preview/newsletter",
+        href: "/preview/minimal/newsletter",
         imageUrls: [newsletter1, newsletter2, newsletter3],
-        downloadHref: "newsletter",
+        downloadHref:
+          "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/webscopeio/mailingui/tree/main/src/emails/minimal/newsletter",
       },
     ],
   },

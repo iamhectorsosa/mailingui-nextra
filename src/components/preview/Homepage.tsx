@@ -1,22 +1,234 @@
 import { CTA } from "@components/ui/CTA";
+import {
+  Code2Icon,
+  EyeIcon,
+  FileIcon,
+  FolderIcon,
+  FolderMinusIcon,
+  FolderPlusIcon,
+  MailIcon,
+  Undo2Icon,
+} from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+type FileType = {
+  name: string;
+  type: "folder" | "file";
+  children: FileType[];
+};
+
+const files: FileType[] = [
+  {
+    name: "minimal",
+    type: "folder",
+    children: [
+      {
+        name: "events",
+        type: "folder",
+        children: [
+          {
+            name: "vip-events",
+            type: "folder",
+            children: [
+              {
+                name: "summer-events",
+                type: "folder",
+                children: [
+                  {
+                    name: "event-details.tsx",
+                    type: "file",
+                    children: [],
+                  },
+                  {
+                    name: "event-invitation.tsx",
+                    type: "file",
+                    children: [],
+                  },
+                ],
+              },
+              {
+                name: "event-review.tsx",
+                type: "file",
+                children: [],
+              },
+            ],
+          },
+          {
+            name: "event-details.tsx",
+            type: "file",
+            children: [],
+          },
+          {
+            name: "event-invitation.tsx",
+            type: "file",
+            children: [],
+          },
+          {
+            name: "event-review.tsx",
+            type: "file",
+            children: [],
+          },
+          {
+            name: "event-suggestions.tsx",
+            type: "file",
+            children: [],
+          },
+        ],
+      },
+      {
+        name: "marketing",
+        type: "folder",
+        children: [
+          {
+            name: "campaign-announcement.tsx",
+            type: "file",
+            children: [],
+          },
+          {
+            name: "discount-code.tsx",
+            type: "file",
+            children: [],
+          },
+          {
+            name: "news-update.tsx",
+            type: "file",
+            children: [],
+          },
+          {
+            name: "product-review.tsx",
+            type: "file",
+            children: [],
+          },
+        ],
+      },
+      {
+        name: "newsletter",
+        type: "folder",
+        children: [
+          {
+            name: "daily-newsletter.tsx",
+            type: "file",
+            children: [],
+          },
+          {
+            name: "subscription-confirmation.tsx",
+            type: "file",
+            children: [],
+          },
+          {
+            name: "subscription-success.tsx",
+            type: "file",
+            children: [],
+          },
+        ],
+      },
+    ],
+  },
+];
 
 export const Homepage = () => {
   return (
-    <div className="mx-auto grid place-content-center place-items-center h-full w-full gap-6 text-center">
-      <section className="space-y-6">
-        <h1 className="text-4xl font-semibold md:text-6xl">
-          Welcome to Preview
-        </h1>
-        <p className="text-lg leading-relaxed text-neutral-500">
-          This page is still under construction! Thanks for your patience!
-        </p>
-        <div className="lg:space-x-2 space-y-2">
-          <CTA href="/">Go back Home</CTA>
-          <CTA secondary href="/docs">
-            Documentation
-          </CTA>
+    <div className="h-screen w-screen flex bg-[#111111] text-slate-100">
+      {/* Preview File Explorer */}
+      <aside className="w-[300px] bg-stone-900/25 px-5 py-6 space-y-4 hidden lg:block">
+        <header>
+          <h1 className="font-bold uppercase text-gray-400">Preview Mode</h1>
+        </header>
+        <span className="text-lg font-bold">src/emails</span>
+        <div className="space-y-3">
+          {files.map((file) => (
+            <FileComponent
+              key={file.name}
+              file={file}
+              href={`/preview/${file.name}`}
+            />
+          ))}
         </div>
-      </section>
+      </aside>
+      {/* Preview Toolbar */}
+      <div className="flex-1">
+        <nav className="flex justify-between gap-2 p-2">
+          <div className="flex items-center gap-4">
+            <CTA secondary dynamicWidth={false} compact href="/templates">
+              <Undo2Icon />
+              <span className="hidden lg:inline">Back Templates</span>
+            </CTA>
+            <h3 className="text-slate-100 font-medium text-sm inline-flex items-center gap-x-2">
+              <FileIcon className="h-5 w-5" />
+              events/event-confirmation.tsx
+            </h3>
+          </div>
+          <div className="items-center gap-4 hidden lg:flex">
+            <div className="bg-stone-900 rounded-full p-2">
+              <button className="brand-gradient rounded-full gap-x-2 px-2 h-9 hover:bg-stone-800">
+                <EyeIcon />
+              </button>
+              <button className="rounded-full gap-x-2 px-2 h-9 hover:bg-stone-800">
+                <Code2Icon />
+              </button>
+            </div>
+            <CTA compact dynamicWidth={false} href="/docs/guide/introduction">
+              <MailIcon />
+              <span className="hidden lg:inline">Send</span>
+            </CTA>
+          </div>
+        </nav>
+        {/* Preview Pane */}
+        <div />
+      </div>
     </div>
+  );
+};
+
+const FileComponent = ({
+  file,
+  href = "",
+}: {
+  file: FileType;
+  href?: string;
+}) => {
+  const { asPath } = useRouter();
+  return (
+    <details
+      className="text-gray-400 text-sm space-y-3"
+      open={asPath.includes(href)}
+    >
+      <summary
+        className={`inline-flex items-center gap-x-2 cursor-pointer hover:opacity-75 ${
+          asPath === href ? "text-slate-100" : ""
+        }`}
+      >
+        {file.type === "folder" ? (
+          <Link
+            className="inline-flex gap-x-2 items-center"
+            href={asPath === href ? href.replace(file.name, "") : href}
+          >
+            {file.children.length ? (
+              asPath.includes(href) ? (
+                <FolderMinusIcon className="h-5 w-5 stroke-1" />
+              ) : (
+                <FolderPlusIcon className="h-5 w-5 stroke-1" />
+              )
+            ) : (
+              <FolderIcon className="h-5 w-5 stroke-1" />
+            )}
+            {file.name}
+          </Link>
+        ) : (
+          <Link className="inline-flex gap-x-2 items-center" href={href}>
+            <FileIcon className="h-5 w-5 stroke-1" />
+            {file.name}
+          </Link>
+        )}
+      </summary>
+      {file.children.length > 0 && (
+        <div className="pl-3 ml-2 border-l border-dotted border-white/10 space-y-3">
+          {file.children.map((f) => (
+            <FileComponent key={f.name} file={f} href={`${href}/${f.name}`} />
+          ))}
+        </div>
+      )}
+    </details>
   );
 };

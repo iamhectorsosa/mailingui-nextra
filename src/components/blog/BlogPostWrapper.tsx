@@ -17,7 +17,7 @@ export const BlogPostWrapper = ({
   const { title, date, description, github } = registry;
 
   return (
-    <>
+    <div className="mx-auto max-w-5xl">
       <header className="space-y-2 pt-12">
         <div className="flex items-center gap-x-2 text-sm nx-text-gray-400">
           <time dateTime={date}>{dayjs(date).format("dddd D MMMM YY")}</time>
@@ -59,6 +59,6 @@ export const BlogPostWrapper = ({
           <time dateTime={date}>{dayjs(date).format("dddd D MMMM YY")}</time>
         </div>
       </footer>
-    </>
+    </div>
   );
 };

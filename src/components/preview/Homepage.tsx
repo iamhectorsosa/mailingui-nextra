@@ -1,4 +1,5 @@
 import { CTA } from "@components/ui/CTA";
+import { FileType } from "@utils/preview";
 import {
   Code2Icon,
   EyeIcon,
@@ -12,122 +13,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-type FileType = {
-  name: string;
-  type: "folder" | "file";
-  children: FileType[];
-};
-
-const files: FileType[] = [
-  {
-    name: "minimal",
-    type: "folder",
-    children: [
-      {
-        name: "events",
-        type: "folder",
-        children: [
-          {
-            name: "vip-events",
-            type: "folder",
-            children: [
-              {
-                name: "summer-events",
-                type: "folder",
-                children: [
-                  {
-                    name: "event-details.tsx",
-                    type: "file",
-                    children: [],
-                  },
-                  {
-                    name: "event-invitation.tsx",
-                    type: "file",
-                    children: [],
-                  },
-                ],
-              },
-              {
-                name: "event-review.tsx",
-                type: "file",
-                children: [],
-              },
-            ],
-          },
-          {
-            name: "event-details.tsx",
-            type: "file",
-            children: [],
-          },
-          {
-            name: "event-invitation.tsx",
-            type: "file",
-            children: [],
-          },
-          {
-            name: "event-review.tsx",
-            type: "file",
-            children: [],
-          },
-          {
-            name: "event-suggestions.tsx",
-            type: "file",
-            children: [],
-          },
-        ],
-      },
-      {
-        name: "marketing",
-        type: "folder",
-        children: [
-          {
-            name: "campaign-announcement.tsx",
-            type: "file",
-            children: [],
-          },
-          {
-            name: "discount-code.tsx",
-            type: "file",
-            children: [],
-          },
-          {
-            name: "news-update.tsx",
-            type: "file",
-            children: [],
-          },
-          {
-            name: "product-review.tsx",
-            type: "file",
-            children: [],
-          },
-        ],
-      },
-      {
-        name: "newsletter",
-        type: "folder",
-        children: [
-          {
-            name: "daily-newsletter.tsx",
-            type: "file",
-            children: [],
-          },
-          {
-            name: "subscription-confirmation.tsx",
-            type: "file",
-            children: [],
-          },
-          {
-            name: "subscription-success.tsx",
-            type: "file",
-            children: [],
-          },
-        ],
-      },
-    ],
-  },
-];
-
-export const Homepage = () => {
+export const Homepage = ({ fileTree }: { fileTree: FileType[] }) => {
   return (
     <div className="h-screen w-screen flex bg-[#111111] text-slate-100">
       {/* Preview File Explorer */}
@@ -137,7 +23,7 @@ export const Homepage = () => {
         </header>
         <span className="text-lg font-bold">src/emails</span>
         <div className="space-y-3">
-          {files.map((file) => (
+          {fileTree.map((file) => (
             <FileComponent
               key={file.name}
               file={file}

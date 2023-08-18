@@ -26,7 +26,7 @@ export const Homepage = () => {
             Build emails effortlessly with our stunning open-sourced components
             and templates
           </p>
-          <div className="lg:flex gap-2">
+          <div className="flex flex-col lg:flex-row gap-2">
             <CTA href="/docs/guide/introduction">Get Started</CTA>
             <CTA
               secondary

@@ -1,5 +1,6 @@
+import { cn } from "@utils/cn";
 import * as React from "react";
-import cn from 'clsx'
+
 import type { ComponentProps, ReactElement } from 'react'
 import { useCallback, useEffect, useState } from 'react'
 

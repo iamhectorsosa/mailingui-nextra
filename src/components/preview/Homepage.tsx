@@ -1,3 +1,4 @@
+import * as React from "react";
 import { CTA } from "@components/ui/CTA";
 import { FileType } from "@utils/preview";
 import {
@@ -8,10 +9,12 @@ import {
   FolderMinusIcon,
   FolderPlusIcon,
   MailIcon,
-  Undo2Icon,
+  PanelLeftCloseIcon,
+  PanelLeftOpenIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { MailingUILogo } from "@components/MailingUILogo";
 
 export const Homepage = ({
   fileTree,
@@ -24,48 +27,70 @@ export const Homepage = ({
   isFolder: boolean;
   html?: string;
 }) => {
+  const [isOpen, setIsOpen] = React.useState(true);
   return (
-    <div className="max-h-screen h-screen w-screen flex bg-[#111111] text-slate-100">
+    <div className="max-h-screen h-screen w-screen flex bg-[#111111] text-slate-100 relative">
       {/* Preview File Explorer */}
-      <aside className="w-[300px] bg-stone-900/25 px-5 py-6 space-y-4 hidden lg:block">
-        <header>
-          <h1 className="font-bold uppercase text-gray-400">Preview Mode</h1>
-        </header>
-        <span className="text-lg font-bold">src/emails</span>
-        <div className="space-y-3">
-          {fileTree.map((file) => (
-            <FileComponent
-              key={file.name}
-              file={file}
-              href={`/preview/${file.name}`}
-            />
-          ))}
-        </div>
-      </aside>
-      {/* Preview Toolbar */}
-      <div className="flex-1 h-full flex flex-col">
-        <nav className="flex justify-between gap-2 p-2">
-          <div className="flex items-center gap-4">
-            <CTA secondary dynamicWidth={false} compact href="/templates">
-              <Undo2Icon />
-              <span className="hidden lg:inline">Back Templates</span>
+      {isOpen && (
+        <aside className="lg:w-[300px] bg-stone-900 absolute lg:relative w-full h-full z-50 px-6">
+          <header className="flex items-center justify-between h-24">
+            <Link href="/">
+              <MailingUILogo />
+            </Link>
+            <CTA
+              secondary
+              dynamicWidth={false}
+              compact
+              onClick={() => setIsOpen(!isOpen)}
+              className="px-4"
+            >
+              {isOpen ? <PanelLeftCloseIcon /> : <PanelLeftOpenIcon />}
             </CTA>
-            <h3 className="text-slate-100 font-medium text-sm inline-flex items-center gap-x-2">
+          </header>
+          <div className="space-y-3">
+            {fileTree.map((file) => (
+              <FileComponent
+                key={file.name}
+                file={file}
+                href={`/preview/${file.name}`}
+              />
+            ))}
+          </div>
+        </aside>
+      )}
+      {/* Preview Toolbar */}
+      <div className="flex-1 flex flex-col h-full w-full">
+        <nav className="flex w-full items-center justify-between gap-2 p-2 h-24 border-b border-white/10 px-6">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              {!isOpen && (
+                <CTA
+                  secondary
+                  dynamicWidth={false}
+                  compact
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="px-4"
+                >
+                  {isOpen ? <PanelLeftCloseIcon /> : <PanelLeftOpenIcon />}
+                </CTA>
+              )}
+            </div>
+            <h3 className="text-slate-100 text-sm inline-flex items-center gap-x-2">
               {isFolder ? (
-                <FolderIcon className="h-5 w-5" />
+                <FolderIcon className="h-5 w-5 stroke-1" />
               ) : (
-                <FileIcon className="h-5 w-5" />
+                <FileIcon className="h-5 w-5 stroke-1" />
               )}
               {selectedPath}
             </h3>
           </div>
-          <div className="items-center gap-4 hidden lg:flex opacity-50">
-            <div className="bg-stone-900 rounded-full p-2">
-              <button className="brand-gradient rounded-full gap-x-2 px-2 h-9 hover:bg-stone-800">
-                <EyeIcon />
+          <div className="items-center gap-x-4 hidden lg:flex opacity-50">
+            <div className="bg-stone-900 rounded-full p-1.5">
+              <button className="brand-gradient rounded-full gap-x-2 px-1.5 h-8 hover:bg-stone-800">
+                <EyeIcon className="h-5 w-5" />
               </button>
-              <button className="rounded-full gap-x-2 px-2 h-9 hover:bg-stone-800">
-                <Code2Icon />
+              <button className="rounded-full gap-x-2 px-1.5 h-8 hover:bg-stone-800">
+                <Code2Icon className="h-5 w-5" />
               </button>
             </div>
             <CTA compact dynamicWidth={false} href="/docs/guide/introduction">
@@ -75,13 +100,15 @@ export const Homepage = ({
           </div>
         </nav>
         {/* Preview Pane */}
-        <div className="h-full">
-          <iframe
-            className="w-full h-full"
-            id={selectedPath}
-            title={selectedPath}
-            srcDoc={html}
-          />
+        <div className="flex-1 ">
+          {!isFolder && (
+            <iframe
+              className="w-full h-full"
+              id={selectedPath}
+              title={selectedPath}
+              srcDoc={html}
+            />
+          )}
         </div>
       </div>
     </div>

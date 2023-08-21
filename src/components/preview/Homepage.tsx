@@ -15,21 +15,30 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { MailingUILogo } from "@components/MailingUILogo";
+import { CodeBlock } from "@components/docs/components/CodeBlock";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@components/ui/Popover";
 
 export const Homepage = ({
   fileTree,
   selectedPath,
   isFolder,
   html,
+  sourceCode,
 }: {
   fileTree: FileType[];
   selectedPath: string;
   isFolder: boolean;
-  html?: string;
+  html: string;
+  sourceCode: string;
 }) => {
   const [isOpen, setIsOpen] = React.useState(true);
+  const [isPreview, setIsPreview] = React.useState(true);
   return (
-    <div className="max-h-screen h-screen w-screen flex bg-[#111111] text-slate-100 relative">
+    <div className="h-screen w-screen flex bg-[#111111] text-slate-100">
       {/* Preview File Explorer */}
       {isOpen && (
         <aside className="lg:w-[300px] bg-stone-900 absolute lg:relative w-full h-full z-50 px-6">
@@ -59,8 +68,8 @@ export const Homepage = ({
         </aside>
       )}
       {/* Preview Toolbar */}
-      <div className="flex-1 flex flex-col h-full w-full">
-        <nav className="flex w-full items-center justify-between gap-2 p-2 h-24 border-b border-white/10 px-6">
+      <div className="flex-1 flex flex-col overflow-scroll">
+        <nav className="flex w-full flex-shrink-0 items-center justify-between gap-2 p-2 h-24 border-b border-white/10 px-6">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               {!isOpen && (
@@ -84,31 +93,82 @@ export const Homepage = ({
               {selectedPath}
             </h3>
           </div>
-          <div className="items-center gap-x-4 hidden lg:flex opacity-50">
+          <div className="items-center gap-x-4 flex">
             <div className="bg-stone-900 rounded-full p-1.5">
-              <button className="brand-gradient rounded-full gap-x-2 px-1.5 h-8 hover:bg-stone-800">
+              <button
+                onClick={() => setIsPreview(true)}
+                className={`rounded-full gap-x-2 px-1.5 h-8 hover:bg-stone-800 ${
+                  isPreview ? "brand-gradient" : ""
+                }`}
+              >
                 <EyeIcon className="h-5 w-5" />
               </button>
-              <button className="rounded-full gap-x-2 px-1.5 h-8 hover:bg-stone-800">
+              <button
+                onClick={() => setIsPreview(false)}
+                className={`rounded-full gap-x-2 px-1.5 h-8 hover:bg-stone-800 ${
+                  !isPreview ? "brand-gradient" : ""
+                }`}
+              >
                 <Code2Icon className="h-5 w-5" />
               </button>
             </div>
-            <CTA compact dynamicWidth={false} href="/docs/guide/introduction">
-              <MailIcon />
-              <span className="hidden lg:inline">Send</span>
-            </CTA>
+            <Popover>
+              <PopoverTrigger>
+                <CTA
+                  className="hidden lg:inline-flex"
+                  compact
+                  dynamicWidth={false}
+                >
+                  <MailIcon />
+                  <span className="hidden lg:inline">Send</span>
+                </CTA>
+              </PopoverTrigger>
+              <PopoverContent className="w-[320px]" align="end">
+                <form className="space-y-4" action="/" method="post">
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-gray-400 block">Email</label>
+                    <input
+                      className="rounded-xl p-4 w-full"
+                      type="email"
+                      id="email"
+                      placeholder="Your email"
+                      aria-label="email"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="subject" className="text-gray-400 block">Subject</label>
+                    <input
+                      className="rounded-xl p-4 w-full"
+                      type="text"
+                      id="subject"
+                      placeholder="Hello from MailingUI"
+                      aria-label="subject"
+                    />
+                  </div>
+                  <footer className="flex justify-between items-start">
+                    <p className="text-gray-400 text-xs">Powered by React.email</p>
+                    <CTA compact>Send</CTA>
+                  </footer>
+                </form>
+              </PopoverContent>
+            </Popover>
           </div>
         </nav>
         {/* Preview Pane */}
-        <div className="flex-1 ">
-          {!isFolder && (
-            <iframe
-              className="w-full h-full"
-              id={selectedPath}
-              title={selectedPath}
-              srcDoc={html}
-            />
-          )}
+        <div className="flex-1 overflow-y-scroll overflow-x-scroll">
+          {!isFolder &&
+            (isPreview ? (
+              <iframe
+                className="w-full h-full"
+                id={selectedPath}
+                title={selectedPath}
+                srcDoc={html}
+              />
+            ) : (
+              <div className="relative h-full overflow-auto [&_pre]:rounded-none [&_pre]:mb-0">
+                <CodeBlock code={sourceCode} />
+              </div>
+            ))}
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 import { cn } from "@utils/cn";
 import * as React from "react";
 
-import type { ComponentProps, ReactElement } from 'react'
-import { useCallback, useEffect, useState } from 'react'
+import type { ComponentProps, ReactElement } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const CodeBlock = ({ code }: { code: string }) => {
   const preRef = React.useRef<HTMLDivElement | null>(null);
@@ -10,10 +10,10 @@ export const CodeBlock = ({ code }: { code: string }) => {
     <div className="relative">
       <div
         ref={preRef}
-        className="nextra-code-block nx-relative nx-mt-6 first:nx-mt-0"
+        className="nextra-code-block relative mt-6 first:mt-0"
         dangerouslySetInnerHTML={{ __html: code }}
       />
-      <div className="nx-opacity-0 nx-transition [div:hover>&]:nx-opacity-100 focus-within:nx-opacity-100 nx-flex nx-gap-1 nx-absolute nx-m-[11px] nx-right-0 nx-top-0">
+      <div className="opacity-0 transition [div:hover>&]:opacity-100 focus-within:opacity-100 flex gap-1 absolute m-[11px] right-0 top-0">
         <CopyToClipboard
           getValue={() =>
             preRef.current?.querySelector("code")?.textContent || ""
@@ -28,65 +28,65 @@ const CopyToClipboard = ({
   getValue,
   ...props
 }: {
-  getValue: () => string
-} & ComponentProps<'button'>): ReactElement => {
-  const [isCopied, setCopied] = useState(false)
+  getValue: () => string;
+} & ComponentProps<"button">): ReactElement => {
+  const [isCopied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (!isCopied) return
+    if (!isCopied) return;
     const timerId = setTimeout(() => {
-      setCopied(false)
-    }, 2000)
+      setCopied(false);
+    }, 2000);
 
     return () => {
-      clearTimeout(timerId)
-    }
-  }, [isCopied])
+      clearTimeout(timerId);
+    };
+  }, [isCopied]);
 
   const handleClick = useCallback<
-    NonNullable<ComponentProps<'button'>['onClick']>
+    NonNullable<ComponentProps<"button">["onClick"]>
   >(async () => {
-    setCopied(true)
+    setCopied(true);
     if (!navigator?.clipboard) {
-      console.error('Access to clipboard rejected!')
+      console.error("Access to clipboard rejected!");
     }
     try {
-      await navigator.clipboard.writeText(getValue())
+      await navigator.clipboard.writeText(getValue());
     } catch {
-      console.error('Failed to copy!')
+      console.error("Failed to copy!");
     }
-  }, [getValue])
+  }, [getValue]);
 
-  const IconToUse = isCopied ? CheckIcon : CopyIcon
+  const IconToUse = isCopied ? CheckIcon : CopyIcon;
 
   return (
     <Button onClick={handleClick} title="Copy code" tabIndex={0} {...props}>
-      <IconToUse className="nextra-copy-icon nx-pointer-events-none nx-h-4 nx-w-4" />
+      <IconToUse className="nextra-copy-icon pointer-events-none h-4 w-4" />
     </Button>
-  )
-}
+  );
+};
 
 const Button = ({
   children,
   className,
   ...props
-}: ComponentProps<'button'>): ReactElement => {
+}: ComponentProps<"button">): ReactElement => {
   return (
     <button
       className={cn(
-        'nextra-button nx-transition-all active:nx-opacity-50',
-        'nx-bg-primary-700/5 nx-border nx-border-black/5 nx-text-gray-600 hover:nx-text-gray-900 nx-rounded-md nx-p-1.5',
-        'dark:nx-bg-primary-300/10 dark:nx-border-white/10 dark:nx-text-gray-400 dark:hover:nx-text-gray-50',
+        "nextra-button transition-all active:opacity-50",
+        "border rounded-md p-1.5",
+        "nx-bg-primary-300/10 border-white/10 text-gray-400 hover:text-gray-50",
         className
       )}
       {...props}
     >
       {children}
     </button>
-  )
-}
+  );
+};
 
-function CheckIcon(props: ComponentProps<'svg'>): ReactElement {
+function CheckIcon(props: ComponentProps<"svg">): ReactElement {
   return (
     <svg
       viewBox="0 0 20 20"
@@ -101,10 +101,10 @@ function CheckIcon(props: ComponentProps<'svg'>): ReactElement {
         clipRule="evenodd"
       />
     </svg>
-  )
+  );
 }
 
-function CopyIcon(props: ComponentProps<'svg'>): ReactElement {
+function CopyIcon(props: ComponentProps<"svg">): ReactElement {
   return (
     <svg
       width="24"
@@ -132,5 +132,5 @@ function CopyIcon(props: ComponentProps<'svg'>): ReactElement {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }

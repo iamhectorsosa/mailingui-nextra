@@ -1,5 +1,5 @@
 import fs from "fs";
-import { getHighlighter, highlight } from "@lib/shiki";
+import { getHighlighter, highlight } from "@utils/shiki";
 import { render } from "@react-email/render";
 
 type getComponentPropsOptions = {

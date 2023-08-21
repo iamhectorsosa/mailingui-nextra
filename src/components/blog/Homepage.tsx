@@ -1,4 +1,4 @@
-import { blogPostRegistry } from "@utils/blog";
+import { blogPostRegistry } from "@registry/blog";
 import dayjs from "dayjs";
 import Link from "next/link";
 
@@ -6,7 +6,7 @@ const posts = blogPostRegistry.reverse();
 
 export const Homepage = () => {
   return (
-    <div className="mx-auto max-w-5xl pt-12">
+    <div className="mx-auto pt-12">
       <header className="pb-10 space-y-2">
         <h1 className="text-4xl font-bold tracking-tight nx-text-slate-100">
           From the blog

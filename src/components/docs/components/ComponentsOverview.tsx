@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { componentTypes } from "@utils/components";
+import { componentTypes } from "@registry/components";
 
 export const ComponentsOverview = () => (
   <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 md:grid-cols-3 md:gap-12 lg:grid-cols-4">

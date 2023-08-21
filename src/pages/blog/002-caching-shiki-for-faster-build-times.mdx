@@ -193,7 +193,7 @@ Shiki's explanations are the biggest hidden bottleneck, though. Understanding Sh
 Interestingly enough, explanations are considered and included in the source code for both methods. They are exposed to the developer only with `codeToThemedTokens` and documented with a default value of `false`. However, **it turns out that the default value for this option is set to true**, so if performance is your concern and you do not need to make use of explanations, set this option to `false`.
 
 ```js copy
-import { getHighlighter } from "@lib/shiki"; // Shiki Cache Abstraction
+import { getHighlighter } from "@utils/shiki"; // Shiki Cache Abstraction
 import { renderToHTML, type Theme, type Lang } from "shiki";
 
 /** ✅ Config */

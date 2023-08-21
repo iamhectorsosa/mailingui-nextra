@@ -15,7 +15,7 @@
 }
 
 .-nx-mt-20 {
-  @apply !-mt-28
+  @apply !-mt-28;
 }
 
 .brand-gradient {
@@ -26,7 +26,7 @@
   @apply bg-gradient-to-br from-indigo-700 from-10% via-purple-600 via-30% to-pink-600 to-90% saturate-[115%];
 }
 
-.nextra-nav-container a[href='/preview'] span,
-.nextra-sidebar-container a[href='/preview'] {
+.nextra-nav-container a[href="/preview"] span,
+.nextra-sidebar-container a[href="/preview"] {
   @apply after:content-['↗'] after:font-mono after:text-xl after:leading-[16px] after:ml-1.5;
 }

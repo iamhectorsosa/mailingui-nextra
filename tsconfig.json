@@ -22,10 +22,9 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["./src/components/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@utils": ["src/utils/index.tsx"],
-      "@utils/*": ["src/utils/*"],
       "@examples/*": ["./src/examples/*"],
+      "@registry/*": ["./src/registry/*"],
+      "@utils/*": ["src/utils/*"],
       "@mailingui/components": ["./src/mailingui/components/index.ts"],
       "@mailingui/themes": ["./src/mailingui/themes/index.ts"]
     }

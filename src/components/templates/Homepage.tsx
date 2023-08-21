@@ -1,11 +1,11 @@
 import { CTA } from "@components/ui/CTA";
 import { DownloadIcon, ExternalLinkIcon, ShareIcon } from "lucide-react";
 import Image from "next/image";
-import { templates } from "@utils/templates";
+import { templates } from "@registry/templates";
 
 export const Homepage = () => {
   return (
-    <div className="mx-auto max-w-5xl pt-12 space-y-12">
+    <div className="mx-auto pt-12 space-y-12">
       {templates.map((template) => (
         <div key={template.id}>
           <header className="pb-10 space-y-4">

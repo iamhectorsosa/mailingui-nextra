@@ -2,7 +2,7 @@ import * as React from "react";
 import dayjs from "dayjs";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { blogPostRegistry } from "@utils/blog";
+import { blogPostRegistry } from "@registry/blog";
 
 export const BlogPostWrapper = ({
   children,
@@ -17,7 +17,7 @@ export const BlogPostWrapper = ({
   const { title, date, description, github } = registry;
 
   return (
-    <div className="mx-auto max-w-5xl">
+    <div className="mx-auto">
       <header className="space-y-2 pt-12">
         <div className="flex items-center gap-x-2 text-sm nx-text-gray-400">
           <time dateTime={date}>{dayjs(date).format("dddd D MMMM YY")}</time>

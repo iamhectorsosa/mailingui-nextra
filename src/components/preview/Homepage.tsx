@@ -124,11 +124,11 @@ export const Homepage = ({
                 </CTA>
               </PopoverTrigger>
               <PopoverContent className="w-[320px]" align="end">
-                <form className="space-y-4" action="/" method="post">
+                <form className="space-y-4 font-sans" action="/" method="post">
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-gray-400 block">Email</label>
                     <input
-                      className="rounded-xl p-4 w-full"
+                      className="rounded-xl p-4 w-full bg-stone-900"
                       type="email"
                       id="email"
                       placeholder="Your email"
@@ -138,7 +138,7 @@ export const Homepage = ({
                   <div className="space-y-2">
                     <label htmlFor="subject" className="text-gray-400 block">Subject</label>
                     <input
-                      className="rounded-xl p-4 w-full"
+                      className="rounded-xl p-4 w-full bg-stone-900"
                       type="text"
                       id="subject"
                       placeholder="Hello from MailingUI"

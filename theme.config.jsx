@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { MailingUILogo } from "@components/MailingUILogo";
-import { Footer } from "@components/shared/Footer";
 import { useRouter } from "next/router";
 import { useConfig } from "nextra-theme-docs";
+import { MailingUILogo } from "@components/MailingUILogo";
+import { Footer } from "@components/shared/Footer";
 
 const theme = {
   logo: <MailingUILogo />,
@@ -35,6 +35,16 @@ const theme = {
     const { frontMatter } = useConfig();
     const url = "https://mailingui.com" + asPath;
 
+    const ogImage = asPath.includes("/blog")
+      ? "images/og/blog.png"
+      : asPath.includes("/docs")
+      ? "images/og/components.png"
+      : asPath.includes("/feedback")
+      ? "images/og/feedback.png"
+      : asPath.includes("/templates")
+      ? "images/og/templates.png"
+      : "images/og/homepage.png";
+
     return (
       <>
         <meta property="og:url" content={url} />
@@ -45,6 +55,7 @@ const theme = {
             frontMatter.description || "Create emails powered by open-source"
           }
         />
+        <meta property="og:image" content={ogImage} />
         <link rel="shortcut icon" href="favicons/favicon-512.png"></link>
         <link
           rel="icon"

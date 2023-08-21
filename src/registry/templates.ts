@@ -42,7 +42,7 @@ export const templates: Template[] = [
         title: "Events",
         description:
           "Events are a great way to get people together. Can be conference, a meetup, or a party.",
-        href: "/preview/minimal/events",
+        href: "/templates/minimal/events",
         imageUrls: [events1, events2, events3],
         downloadHref:
           "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/webscopeio/mailingui/tree/main/src/emails/minimal/events",
@@ -51,7 +51,7 @@ export const templates: Template[] = [
         title: "Marketing",
         description:
           "Marketing emails are a great way to promote your business with product announcement or a special offer.",
-        href: "/preview/minimal/marketing",
+        href: "/templates/minimal/marketing",
         imageUrls: [marketing1, marketing2, marketing3],
         downloadHref:
           "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/webscopeio/mailingui/tree/main/src/emails/minimal/marketing",
@@ -60,7 +60,7 @@ export const templates: Template[] = [
         title: "Newsletter",
         description:
           "Newsletters are a great way to keep your audience up-to-date with what's going on in your business.",
-        href: "/preview/minimal/newsletter",
+        href: "/templates/minimal/newsletter",
         imageUrls: [newsletter1, newsletter2, newsletter3],
         downloadHref:
           "https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/webscopeio/mailingui/tree/main/src/emails/minimal/newsletter",

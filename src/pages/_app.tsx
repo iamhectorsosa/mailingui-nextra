@@ -1,5 +1,7 @@
 import "../styles/globals.css";
+import type { AppProps } from "next/app";
 import localFont from "next/font/local";
+import { Newsletter } from "@components/Newsletter";
 
 const basierCircle = localFont({
   src: [
@@ -48,10 +50,12 @@ const basierCircle = localFont({
   variable: "--font-basier-circle",
 });
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <main className={`${basierCircle.variable} font-sans`}>
-      <Component {...pageProps} />
+      <Newsletter>
+        <Component {...pageProps} />
+      </Newsletter>
     </main>
   );
 }

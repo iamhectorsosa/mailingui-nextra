@@ -1,8 +1,9 @@
-import { cn } from "@utils/cn";
+/* eslint-disable tailwindcss/no-custom-classname */
 import * as React from "react";
 
 import type { ComponentProps, ReactElement } from "react";
 import { useCallback, useEffect, useState } from "react";
+import { cn } from "@utils/cn";
 
 export const CodeBlock = ({ code }: { code: string }) => {
   const preRef = React.useRef<HTMLDivElement | null>(null);
@@ -13,7 +14,7 @@ export const CodeBlock = ({ code }: { code: string }) => {
         className="nextra-code-block relative mt-6 first:mt-0"
         dangerouslySetInnerHTML={{ __html: code }}
       />
-      <div className="opacity-0 transition [div:hover>&]:opacity-100 focus-within:opacity-100 flex gap-1 absolute m-[11px] right-0 top-0">
+      <div className="absolute right-0 top-0 m-[11px] flex gap-1 opacity-0 transition focus-within:opacity-100 [div:hover>&]:opacity-100">
         <CopyToClipboard
           getValue={() =>
             preRef.current?.querySelector("code")?.textContent || ""
@@ -48,12 +49,12 @@ const CopyToClipboard = ({
   >(async () => {
     setCopied(true);
     if (!navigator?.clipboard) {
-      console.error("Access to clipboard rejected!");
+      setCopied(false);
     }
     try {
       await navigator.clipboard.writeText(getValue());
     } catch {
-      console.error("Failed to copy!");
+      setCopied(false);
     }
   }, [getValue]);
 
@@ -77,7 +78,7 @@ const Button = ({
         "nextra-button transition-all active:opacity-50",
         "border rounded-md p-1.5",
         "nx-bg-primary-300/10 border-white/10 text-gray-400 hover:text-gray-50",
-        className
+        className,
       )}
       {...props}
     >

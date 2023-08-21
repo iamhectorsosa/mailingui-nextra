@@ -1,63 +1,40 @@
-import { CTA } from "@components/ui/CTA";
-import { DownloadIcon, ExternalLinkIcon, ShareIcon } from "lucide-react";
+import { ArrowRightIcon, DownloadIcon } from "lucide-react";
 import Image from "next/image";
+import { Header } from "./Header";
 import { templates } from "@registry/templates";
+import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
   return (
-    <div className="mx-auto pt-12 space-y-12">
+    <div className="mx-auto space-y-12 pt-2">
       {templates.map((template) => (
         <div key={template.id}>
-          <header className="pb-10 space-y-4">
-            <div className="space-y-2">
-              <div className="flex items-center gap-x-2 text-sm nx-text-gray-400">
-                <span>{template.price}</span>
-                <span>·</span>
-                <div className="space-x-1">
-                  <span>created by</span>
-                  <a
-                    target="_blank"
-                    href={`https://github.com/${
-                      template.github === "MailingUI"
-                        ? "webscope/mailingui"
-                        : template.github
-                    }`}
-                  >
-                    <span className="brand-gradient bg-clip-text font-semibold text-transparent">
-                      @{template.github}
-                    </span>
-                  </a>
-                </div>
-              </div>
-              <h1 className="text-4xl font-bold tracking-tight nx-text-slate-100">
-                {template.title}
-              </h1>
-              <p className="nx-text-gray-400">{template.description}</p>
-            </div>
-            <CTA href={template.downloadHref}>
-              <DownloadIcon />
-              Download
-            </CTA>
-          </header>
-          <section className="space-y-12 border-t border-white/10 py-10">
+          <Header
+            tag={template.price}
+            github={template.github}
+            title={template.title}
+            description={template.description}
+            downloadHref={template.downloadHref}
+          />
+          <section className="space-y-12 py-10">
             {template.categories.map((category) => (
               <div
                 key={category.downloadHref}
-                className="grid gap-6 grid-cols-1 lg:grid-cols-2 items-center justify-center"
+                className="grid grid-cols-1 items-center justify-center gap-6"
               >
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <h3 className="font-semibold tracking-tight nx-text-slate-100 text-2xl">
+                    <h3 className="text-2xl font-semibold tracking-tight text-slate-100">
                       {category.title}
                     </h3>
-                    <p className="line-clamp-2 nx-text-gray-400">
+                    <p className="line-clamp-2 text-gray-400">
                       {category.description}
                     </p>
                   </div>
-                  <div className="lg:space-x-2 space-y-2">
+                  <div className="flex flex-col gap-2 lg:flex-row">
                     <CTA compact href={category.href}>
-                      <ExternalLinkIcon />
-                      Preview
+                      Explore
+                      <ArrowRightIcon />
                     </CTA>
                     <CTA compact secondary href={category.downloadHref}>
                       <DownloadIcon />

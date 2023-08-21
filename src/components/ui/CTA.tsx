@@ -29,13 +29,15 @@ export const CTA = ({
     <Component
       className={cn(
         "inline-flex items-center justify-center gap-x-2 rounded-xl font-medium text-center",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:!ring-white focus-visible:ring-offset-2 focus-visible:!ring-offset-[#111111]"
+        ,
         !secondary && "bg-white text-black",
         !secondary
           ? "hover-brand-gradient hover:text-white transition-colors"
           : "border border-transparent hover:border-white",
         compact ? "px-6 h-12 text-sm" : "px-8 h-14",
         dynamicWidth ? "w-full lg:w-fit" : "w-fit",
-        className
+        className,
       )}
     >
       {children}

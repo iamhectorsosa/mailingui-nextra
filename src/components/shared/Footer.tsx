@@ -6,7 +6,7 @@ export const Footer = () => {
 
   return (
     <div className="bg-stone-900">
-      <footer className="pt-12 pb-24 max-w-[90rem] mx-auto px-6">
+      <footer className="mx-auto max-w-[90rem] px-6 pb-24 pt-12">
         <div>
           <Link href="/" className="hover:opacity-75">
             <MailingUILogo />

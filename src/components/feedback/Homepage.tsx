@@ -4,21 +4,24 @@ import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
   return (
-    <div className="mx-auto max-w-5xl grid place-content-center place-items-center h-full w-full gap-6 lg:grid-cols-2">
+    <div className="mx-auto grid h-full w-full max-w-5xl place-content-center place-items-center gap-6 lg:grid-cols-2">
       <section className="space-y-6">
-        <h1 className="text-5xl lg:text-6xl font-semibold tracking-tight">
+        <h1 className="text-5xl font-semibold tracking-tight lg:text-6xl">
           Share your Feedback
         </h1>
-        <p className="text-lg leading-relaxed nx-text-gray-400">
+        <p className="text-lg leading-relaxed text-gray-400">
           We want to hear what you think about MailingUI! Whether it&apos;s an
           issue you&apos;ve encountered or a new feature suggestion, your
           feedback is important to us.
         </p>
-        <div className="lg:space-x-2 space-y-2">
+        <div className="space-y-2 lg:space-x-2">
           <CTA href="https://github.com/webscopeio/mailingui/issues">
             Report an issue
           </CTA>
-          <CTA secondary href="https://github.com/webscopeio/mailingui/discussions">
+          <CTA
+            secondary
+            href="https://github.com/webscopeio/mailingui/discussions"
+          >
             Request a new feature
           </CTA>
         </div>

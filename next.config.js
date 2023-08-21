@@ -16,7 +16,17 @@ const nextConfig = {
         source: "/docs/components",
         destination: "/docs/components/overview",
         permanent: false,
-      }
+      },
+      {
+        source: "/templates",
+        destination: "/templates/minimal/overview",
+        permanent: false,
+      },
+      {
+        source: "/templates/minimal",
+        destination: "/templates/minimal/overview",
+        permanent: false,
+      },
     ];
   },
   images: {

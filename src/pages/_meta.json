@@ -22,10 +22,7 @@
     "href": "/templates",
     "theme": {
       "breadcrumb": false,
-      "footer": true,
-      "sidebar": false,
-      "toc": false,
-      "pagination": false
+      "toc": false
     }
   },
   "blog": {
@@ -51,20 +48,6 @@
       "toc": false,
       "pagination": false,
       "layout": "full"
-    }
-  },
-  "preview": {
-    "title": "Preview",
-    "type": "page",
-    "href": "/preview",
-    "theme": {
-      "breadcrumb": false,
-      "navbar": false,
-      "footer": false,
-      "sidebar": false,
-      "toc": false,
-      "pagination": false,
-      "layout": "raw"
     }
   }
 }
